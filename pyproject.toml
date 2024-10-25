@@ -15,3 +15,15 @@ editspeed = "editspeed:main"
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "S607",    # Starting a process with a partial executable path
+    "S603",    # Wants shell=True
+    "T201",    # Forbids print
+    "DTZ005",  # Ignore timezones
+    "PLW2901", # Shadowing of with variable
+    "D100",    # Don't care about docstrings
+    "D103",    # Don't care about docstrings
+]

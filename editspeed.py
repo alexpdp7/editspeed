@@ -1,18 +1,16 @@
 import argparse
 import datetime
-import os
 import pathlib
 import subprocess
 import tempfile
 
 import editdistance
-from prompt_toolkit import application
-from prompt_toolkit import layout
-from prompt_toolkit.layout import containers
 import ptterm
+from prompt_toolkit import application, layout
+from prompt_toolkit.layout import containers
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("file")
     parser.add_argument("--top-margin", type=int, default=0)
@@ -21,8 +19,9 @@ def main():
     content_path = pathlib.Path(args.file)
     content = content_path.read_text()
 
-    with tempfile.TemporaryDirectory(dir=os.getcwd()) as tempdir:
-        def done():
+    with tempfile.TemporaryDirectory(dir=pathlib.Path.cwd()) as tempdir:
+
+        def done() -> None:
             es.exit()
 
         tempdir = pathlib.Path(tempdir)
@@ -36,9 +35,15 @@ def main():
         editor_command = ["bash", "-c", f"$EDITOR {edited_file}"]
 
         editor = ptterm.Terminal(done_callback=done, command=editor_command)
-        text = layout.Window(containers.FormattedTextControl("\n" * args.top_margin + content), dont_extend_width=True)
+        text = layout.Window(
+            containers.FormattedTextControl("\n" * args.top_margin + content),
+            dont_extend_width=True,
+        )
 
-        es = application.Application(layout=layout.Layout(layout.VSplit([editor, text])), full_screen=True)
+        es = application.Application(
+            layout=layout.Layout(layout.VSplit([editor, text])),
+            full_screen=True,
+        )
 
         start = datetime.datetime.now()
         es.run()
@@ -51,8 +56,8 @@ def main():
         print('"Words"', words)
         print('"Words"/minute', words / (total_seconds / 60))
 
-        subprocess.run(["diff", original, edited_file])
+        subprocess.run(["diff", original, edited_file])  # noqa: PLW1510 check=False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
