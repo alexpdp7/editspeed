@@ -1,0 +1,10 @@
+[project]
+name = "editspeed"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "editdistance>=0.8.1",
+    "ptterm>=0.2",
+]
