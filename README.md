@@ -1,3 +1,21 @@
+# editspeed
+
+editspeed measures your speed reproducing some text with your editor.
+
+## Installation
+
+With `pipx`:
+
 ```
-uv run python -m hello rainbow.txt --top-margin=1
+pipx install git+https://github.com/alexpdp7/editspeed.git
 ```
+
+## Sample usage
+
+```
+editspeed rainbow.txt --top-margin=1
+```
+
+## Caveats
+
+* Only works with bash.
