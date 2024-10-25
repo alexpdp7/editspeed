@@ -8,3 +8,10 @@ dependencies = [
     "editdistance>=0.8.1",
     "ptterm>=0.2",
 ]
+
+[project.scripts]
+editspeed = "editspeed:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
