@@ -16,6 +16,12 @@ pipx install git+https://github.com/alexpdp7/editspeed.git
 editspeed rainbow.txt --top-margin=1
 ```
 
+## Run without installing
+
+```
+pipx run --spec git+https://github.com/alexpdp7/editspeed.git editspeed <(curl https://raw.githubusercontent.com/alexpdp7/editspeed/refs/heads/main/rainbow.txt)
+```
+
 ## Caveats
 
 * Only works with bash.
