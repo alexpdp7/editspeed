@@ -37,7 +37,15 @@ def main():
 
         start = datetime.datetime.now()
         es.run()
-        print(datetime.datetime.now() - start, editdistance.eval(content, edited_file.read_text()))
+
+        total_seconds = (datetime.datetime.now() - start).total_seconds()
+        words = len(content.split())
+
+        print("Total seconds", total_seconds)
+        print("Edit distance", editdistance.eval(content, edited_file.read_text()))
+        print('"Words"', words)
+        print('"Words"/minute', words / (total_seconds / 60))
+
         subprocess.run(["diff", content_path, edited_file])
 
 
