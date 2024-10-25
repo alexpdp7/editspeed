@@ -10,6 +10,12 @@ With `pipx`:
 pipx install git+https://github.com/alexpdp7/editspeed.git
 ```
 
+With `uv`:
+
+```
+uv tool install git+https://github.com/alexpdp7/editspeed.git
+```
+
 ## Sample usage
 
 ```
