@@ -26,6 +26,11 @@ def main():
             es.exit()
 
         tempdir = pathlib.Path(tempdir)
+
+        # store the input somewhere, just in case you are using <() or whatever
+        original = tempdir / "original"
+        original.write_text(content)
+
         edited_file = tempdir / content_path.name
 
         editor_command = ["bash", "-c", f"$EDITOR {edited_file}"]
@@ -46,7 +51,7 @@ def main():
         print('"Words"', words)
         print('"Words"/minute', words / (total_seconds / 60))
 
-        subprocess.run(["diff", content_path, edited_file])
+        subprocess.run(["diff", original, edited_file])
 
 
 if __name__ == '__main__':
