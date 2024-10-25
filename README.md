@@ -1,3 +1,3 @@
 ```
-uv run python -m hello example.md --top-margin=1
+uv run python -m hello rainbow.txt --top-margin=1
 ```
