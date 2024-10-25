@@ -2,6 +2,7 @@ import argparse
 import datetime
 import os
 import pathlib
+import subprocess
 import tempfile
 
 import editdistance
@@ -37,6 +38,7 @@ def main():
         start = datetime.datetime.now()
         es.run()
         print(datetime.datetime.now() - start, editdistance.eval(content, edited_file.read_text()))
+        subprocess.run(["diff", content_path, edited_file])
 
 
 if __name__ == '__main__':
