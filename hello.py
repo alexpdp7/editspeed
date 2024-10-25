@@ -30,7 +30,7 @@ def main():
         editor_command = ["bash", "-c", f"$EDITOR {edited_file}"]
 
         editor = ptterm.Terminal(done_callback=done, command=editor_command)
-        text = layout.Window(containers.FormattedTextControl("\n" * args.top_margin + content))
+        text = layout.Window(containers.FormattedTextControl("\n" * args.top_margin + content), dont_extend_width=True)
 
         es = application.Application(layout=layout.Layout(layout.VSplit([editor, text])), full_screen=True)
 
