@@ -22,6 +22,10 @@ editspeed rainbow.txt --top-margin=1
 pipx run --spec git+https://github.com/alexpdp7/editspeed.git editspeed <(curl https://raw.githubusercontent.com/alexpdp7/editspeed/refs/heads/main/rainbow.txt)
 ```
 
+```
+uvx --from git+https://github.com/alexpdp7/editspeed.git editspeed <(curl https://raw.githubusercontent.com/alexpdp7/editspeed/refs/heads/main/rainbow.txt)
+```
+
 ## Caveats
 
 * Only works with bash.
