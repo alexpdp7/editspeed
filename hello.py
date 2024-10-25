@@ -30,10 +30,9 @@ def main():
         editor_command = ["bash", "-c", f"$EDITOR {edited_file}"]
 
         editor = ptterm.Terminal(done_callback=done, command=editor_command)
-        split = layout.Window(width=1, char="|", style="class:line")
         text = layout.Window(containers.FormattedTextControl("\n" * args.top_margin + content))
 
-        es = application.Application(layout=layout.Layout(layout.VSplit([editor, split, text])), full_screen=True)
+        es = application.Application(layout=layout.Layout(layout.VSplit([editor, text])), full_screen=True)
 
         start = datetime.datetime.now()
         es.run()
